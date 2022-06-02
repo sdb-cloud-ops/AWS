@@ -1,4 +1,4 @@
-# Deploy infrastructure required to setup Kubernetes cluster with Terraform 
+# Deploy infrastructure required to setup Kubernetes cluster on AWS with Terraform 
 
 This purpose of this article is to automate the process of deploying infrastructure required to setup a Kubernetes cluster with Terraform.
 
