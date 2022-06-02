@@ -1,6 +1,6 @@
 # Deploy infrastructure required to setup a Kubernetes cluster with Terraform
 
-This purpose of this article is to automate the process of setting up a Kubernetes cluster.
+This purpose of this article is to automate the process of setting up a Kubernetes cluster with Terraform.
 
 We chose to use Kubespray to deploy our Kubernetes cluster. Kubespray is a composition of [Ansible](https://docs.ansible.com/) playbooks, [inventory](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/ansible.md), provisioning tools, and domain knowledge for generic OS/Kubernetes clusters configuration management tasks. Kubespray provides:
 
