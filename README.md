@@ -1,4 +1,4 @@
-# Deploy a Production Ready self hosted, highly available Kubernetes Cluster with Kubespray
+# Deploy infrastructure required to setup a Kubernetes cluster with Terraform
 
 This purpose of this article is to automate the process of setting up a Kubernetes cluster.
 
