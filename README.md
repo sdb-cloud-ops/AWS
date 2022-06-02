@@ -60,7 +60,7 @@ The Terraform scripts have been modified not to expose sensitive data such as cr
 We then enter the cloned directory and copy the credentials.
 
 ```console
-cd kubespray/contrib/terraform/aws/
+cd ss-k8s-kubespray/contrib/terraform/aws/
 cp credentials.tfvars.example credentials.tfvars
 ```
 
