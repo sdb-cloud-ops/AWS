@@ -345,3 +345,87 @@ terraform apply “kube-plan”
 Once deployed, we can verify the infrastructure in our AWS dashboard.
 
 <img width="1261" alt="image" src="https://user-images.githubusercontent.com/62608538/171557147-60bbd963-2671-44d3-a0d4-c08c2f78cc3c.png">
+
+### Deploying a cluster with Kubespray
+
+With the infrastructure provisioned, we can begin to deploy a Kubernetes cluster using Ansible. Start off by entering the Kubespray directory and use the Ansible inventory file created by Terraform.
+
+```console
+cd ~/ss-k8s-kubespray
+cat inventory/hosts
+```
+
+Next, load the SSH keys, which were created in AWS earlier on. First, create a file (in our case, it will be located at ``~/.ssh/kube-ansible.pem``) and paste the private part of the key created at AWS there.
+
+```console
+cat “” > ~/.ssh/kube-ansible.pem
+eval $(ssh-agent)
+ssh-add -D
+ssh-add ~/.ssh/kube-ansible.pem
+```
+
+Once the SSH keys are loaded, we can now deploy a cluster using Ansible playbooks. This takes roughly 20 minutes.
+
+```console
+ansible-playbook -i ./inventory/hosts ./cluster.yml -e ansible_user=core -b --become-user=root --flush-cache
+```
+
+Configuring access to the cluster
+Now that the cluster has been deployed, we can configure who has access to it. First, find the IP address of the first master.
+
+```console
+cat inventory/hosts
+```
+
+After identifying the IP address, we can SSH to the first master.
+
+```console
+ssh  -F ssh-bastion.conf core@10.250.200.182
+```
+
+Once connected, we are set as a core user. Switch to the root user and copy the kubectl config located in the root home folder.
+
+```console
+sudo ~s
+cd ~
+cd .kube
+cat config
+```
+Highlight and copy the kubectl config as shown in the following image.
+
+![Copy Kube config](https://www.altoros.com/blog/wp-content/uploads/2020/03/kubectl-config-highlight-1024x576.png)
+
+Return to the jumpbox and go to ``kube/config``.
+
+```console
+exit
+vim ~/.kube/config
+```
+
+Paste the copied kubectl config here.
+
+![Copying kubectl config](https://www.altoros.com/blog/wp-content/uploads/2020/03/kubectl-config-paste-1024x576.png)
+
+Next, copy the URL of the load balancer from the inventory file. In our case, the URL is kubernetes-elb-altoros-cluster-458236357.us-east-2.elb-amazonaws.com. Paste this URL into the server parameter in kubectl config. Do not overwrite the port.
+
+### Running test deployments
+
+After configuring access to the cluster, we can check on our cluster.
+
+```console
+kubectl get nodes
+kubectl cluster-info
+```
+Node and cluster details will be shown in the console.
+
+![Cluster and node details](https://www.altoros.com/blog/wp-content/uploads/2020/03/kubernetes-cluster-and-node-details-1024x576.png)
+
+With the cluster ready, we can run a test deployment.
+
+```console
+kubectl create deployment nginx --image=nginx
+kubectl get pods
+kubectl get deployments
+```
+
+Entering this commands should deploy NGINX and also return the status of the pods and deployments.
