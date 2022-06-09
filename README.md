@@ -406,7 +406,7 @@ Paste the copied kubectl config here.
 
 ![Copying kubectl config](https://www.altoros.com/blog/wp-content/uploads/2020/03/kubectl-config-paste-1024x576.png)
 
-Next, copy the URL of the load balancer from the inventory file. In our case, the URL is kubernetes-elb-altoros-cluster-458236357.us-east-2.elb-amazonaws.com. Paste this URL into the server parameter in kubectl config. Do not overwrite the port.
+Next, copy the URL of the load balancer from the inventory file. In our case, the URL is ``kubernetes-elb-altoros-cluster-458236357.us-east-2.elb-amazonaws.com``. Paste this URL into the server parameter in kubectl config. Do not overwrite the port.
 
 ### Running test deployments
 
@@ -429,3 +429,9 @@ kubectl get deployments
 ```
 
 Entering this commands should deploy NGINX and also return the status of the pods and deployments.
+
+![Successful test deployment](https://www.altoros.com/blog/wp-content/uploads/2020/03/deploy-nginx.png)
+
+With this, we have successfully provisioned our cloud infrastructure with Terraform. We then deployed a Kubernetes cluster using Kubespray. We also configured access to the cluster and were finally able to run test deployments.
+
+More on Kubespray can be found in its [GitHub repository](https://github.com/kubernetes-sigs/kubespray), as well as in the project’s [official documentation](https://kubespray.io/#/).
