@@ -1,6 +1,6 @@
-# Deploy infrastructure required to setup Kubernetes cluster on AWS with Terraform 
+# Deploy infrastructure required to setup a self hosted Kubernetes cluster on AWS with Terraform 
 
-This purpose of this article is to automate the process of deploying infrastructure required to setup a Kubernetes cluster with Terraform.
+This purpose of this article is to automate the process of deploying infrastructure required to setup a self-hosted/self-managed Kubernetes cluster with Terraform.
 
 We chose to use Kubespray to deploy our Kubernetes cluster. Kubespray is a composition of [Ansible](https://docs.ansible.com/) playbooks, [inventory](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/ansible.md), provisioning tools, and domain knowledge for generic OS/Kubernetes clusters configuration management tasks. Kubespray provides:
 
