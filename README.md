@@ -74,6 +74,7 @@ In this case, the AWS credentials were as follows.
 
 ---
 **NOTE**
+
 We are only specifying the region and key name in this example.
 
 ---
