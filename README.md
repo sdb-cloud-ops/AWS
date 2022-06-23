@@ -47,7 +47,7 @@ Since Kubespray does not automatically create virtual machines, we need to use T
 
 To start, we create an SSH key pair for Ansible on AWS.
 
-![Generate AWS Keypair](https://www.altoros.com/blog/wp-content/uploads/2020/03/Creating-SSH-key-pairs.png)
+<img width="768" alt="image" src="https://user-images.githubusercontent.com/62608538/175311474-57c16733-1e7d-4a6d-8532-a8a08986b646.png">
 
 The next step is to clone the Kubespray repository into our jumpbox. 
 
