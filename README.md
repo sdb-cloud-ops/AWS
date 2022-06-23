@@ -72,9 +72,10 @@ vim credentials.tfvars
 
 In this case, the AWS credentials were as follows.
 
-```markdown
-> **Note:** We are only specifying the region and key name in this example.
-```
+---
+**NOTE**
+We are only specifying the region and key name in this example.
+---
 
 ```console
 # #AWS Access Key
